@@ -1,0 +1,28 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "REST API Assignment",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rconatser/to-do-list-ria-2.git"
+  },
+  "author": "Rachel Conatser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rconatser/to-do-list-ria-2/issues"
+  },
+  "homepage": "https://github.com/rconatser/to-do-list-ria-2#readme"
+}
