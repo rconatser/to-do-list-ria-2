@@ -2,34 +2,19 @@ const express = require('express');
 const taskController = require('../controllers/task');
 const router = express.Router();
 
-/* 
-    GET / POST Requests:
-        - Create User
-        - Create Task
-        - Show Task(s) 
-
-    PUT / DELETE Requests:
-        - Update Task Item
-        - Delete Task Item
-
-    To Do Task Fields
-        - Title for Task Item
-        - Description for Task Item
-        - Due Date
-        - Priority
-        - Tags
-*/
-
-// GET - Single Task created
-router.get('/task', taskController.getTask);
-
 // GET - All Tasks created
-router.get('/all', taskController.getAllTasks);
+router.get('/tasks', taskController.getAllTasks);
 
 // GET - All Tasks filtered by Tag created
-router.get('/tag/:tag', taskController.getTasksByTag);
+router.get('/bytag', taskController.getTasksByTag);
 
 // POST - Creates Task with Data
 router.post('/create', taskController.createTask);
+
+// PUT - Overides Task with New Data
+router.put('/update/:id', taskController.editTask);
+
+// DELETE - Deletes task
+router.delete('/delete/:id', taskController.deleteTask);
 
 module.exports = router;

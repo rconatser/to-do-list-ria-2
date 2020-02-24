@@ -1,12 +1,5 @@
 const Task = require('../models/task')
 
-exports.getTask = (req, res, next) => {
-    Task.find()
-    .then(result => {
-      res.status(200).json(result);     
-    })
-};
-
 exports.getAllTasks = (req, res, next) => {
   Task.find()
   .then(result => {
@@ -15,11 +8,31 @@ exports.getAllTasks = (req, res, next) => {
 };
 
 exports.getTasksByTag = (req, res, next) => {
-  const tags = req.body.tags;
-  Task.findById(tags)
+  const tags = req.query;
+  Task.find(tags)
   .then(result => {
     res.status(200).send(result)
   })
+};
+
+exports.editTask = async (req, res, next) => {
+  try {
+    var task = await Task.findById(req.params.id).exec();
+    task.set(req.body);
+    var result = await task.save();
+    res.send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+exports.deleteTask = async (req, res, next) => {
+  try {
+    var result = await Task.deleteOne({ _id: req.params.id }).exec();
+    res.send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
 exports.createTask = (req, res, next) => {
