@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const listSchema = new Schema(
+const userSchema = new Schema(
   {
-    title: {
+    username: {
       type: String,
       required: true
     },
-    dueDate: {
-      type: Date,
+    email: {
+      type: String,
       required: true
     },
-    content: {
+    password: {
       type: String,
       required: true
     }
@@ -19,4 +19,4 @@ const listSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('List', listSchema);
+module.exports = mongoose.model('User', userSchema);

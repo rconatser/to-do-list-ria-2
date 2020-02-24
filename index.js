@@ -1,24 +1,26 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const listRoutes = require('./routes/list');
+const taskRoutes = require('./routes/task');
+const userRoutes = require('./routes/user');
 
 const port = 8080;
 const app = express();
 
 app.use(bodyParser.json());
-app.use('/feed', listRoutes);
+app.use(bodyParser.urlencoded());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// listen for requests
-app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
-});
+app.use('/', taskRoutes);
+app.use('/user', userRoutes);
 
 mongoose
-    .connect('mongodb+srv://rconatser:Rc119335@cluster0-wtpya.mongodb.net/test?retryWrites=true&w=majority')
+    .connect('mongodb+srv://dgm4790:3tTMvKF9MnKMFBd9@cluster0-wtpya.mongodb.net/app?retryWrites=true&w=majority')
     .then(result => {
-        app.listen(8080);
+        app.listen(port);
+        console.log(`Server is listening on port ${port}`);
     })
     .catch(err => {
         console.log(err);
