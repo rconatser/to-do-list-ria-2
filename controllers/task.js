@@ -14,6 +14,14 @@ exports.getAllTasks = (req, res, next) => {
   })
 };
 
+exports.getTasksByTag = (req, res, next) => {
+  const tags = req.body.tags;
+  Task.findById(tags)
+  .then(result => {
+    res.status(200).send(result)
+  })
+};
+
 exports.createTask = (req, res, next) => {
     const title = req.body.title;
     const dueDate = req.body.dueDate;
