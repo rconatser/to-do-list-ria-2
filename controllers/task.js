@@ -15,6 +15,20 @@ exports.getTasksByTag = (req, res, next) => {
   })
 };
 
+exports.sortTasksByPriority = (req, res, next) => {
+  Task.find()
+    .sort({dueDate: 1}) // sorts by date ascending
+    .then(result => {
+      res.status(200).send(result)
+    })
+    .catch(err => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
 exports.editTask = (req, res, next) => {
   const id = req.params.id;
   const title = req.body.title;

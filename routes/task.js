@@ -8,6 +8,9 @@ router.get('/tasks', taskController.getAllTasks);
 // GET - All Tasks filtered by Tag created
 router.get('/bytag', taskController.getTasksByTag);
 
+// GET - All Tasks sorted by Due Date (Ascending)
+router.get('/due', taskController.sortTasksByPriority);
+
 // POST - Creates Task with Data
 router.post('/create', taskController.createTask);
 

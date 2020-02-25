@@ -9,24 +9,6 @@ const userRoutes = require('./routes/user');
 const port = 8080;
 const app = express();
 
-/* 
-    GET / POST Requests:
-        - Create User
-        - Create Task
-        - Show Task(s) 
-
-    PUT / DELETE Requests:
-        - Update Task Item
-        - Delete Task Item
-
-    To Do Task Fields
-        - Title for Task Item
-        - Description for Task Item
-        - Due Date
-        - Priority
-        - Tags
-*/
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
