@@ -19,3 +19,14 @@ h1, h2, h3, h4, h5, h6 {
 .container h1 {
     padding: 40px 0;
 }
+
+.container img#icon {
+    width: 50px;
+    margin-right: 15px;
+}
+
+.container div.flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
