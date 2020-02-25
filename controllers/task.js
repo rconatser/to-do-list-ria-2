@@ -15,24 +15,66 @@ exports.getTasksByTag = (req, res, next) => {
   })
 };
 
-exports.editTask = async (req, res, next) => {
+exports.editTask = (req, res, next) => {
+  const id = req.params.id;
   const title = req.body.title;
   const dueDate = req.body.dueDate;
   const content = req.body.content;
   const priority = req.body.priority;
   const tags = req.body.tags;
 
-  const task = await Task.findByIdAndUpdate({_id: req.params.id}, {query});
-  
-}
+  Task.findByIdAndUpdate(id)
+  .then(task => {
+    if(!task){
+      const error = new Error('Could not find post.');
+      error.statusCode = 404;
+      throw error;
+    }
+    task.title = title;
+    task.dueDate = dueDate;
+    task.content = content;
+    task.priority = priority;
+    task.tags = tags;
+    return task.save();
+  })
+  .then(result => {
+    res.status(200).json({
+      message: 'Task successfully updated!',
+      task: result
+    })
+  })
+  .catch(err => {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  });
+};
 
-exports.deleteTask = async (req, res, next) => {
-  try {
-    var result = await Task.deleteOne({ _id: req.params.id }).exec();
-    res.send(result);
-  } catch (error) {
-    res.status(500).send(error);
-  }
+exports.deleteTask = (req, res, next) => {
+  const id = req.params.id;
+  Task.findById(id)
+  // when users get implemented, will add verification that post belongs to user
+    .then(task => {
+      if(!task){
+        const error = new Error('Could not find post.');
+        error.statusCode = 404;
+        throw error;
+      }
+      return Task.findByIdAndRemove(id);
+    })
+    .then(result => {
+      console.log(result);
+      res.status(200).json({
+        message: 'Task has been deleted.'
+      })
+    })
+    .catch(err => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
 };
 
 exports.createTask = (req, res, next) => {

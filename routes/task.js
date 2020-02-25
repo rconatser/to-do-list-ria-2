@@ -12,7 +12,7 @@ router.get('/bytag', taskController.getTasksByTag);
 router.post('/create', taskController.createTask);
 
 // PUT - Overides Task with New Data
-router.patch('/update/:id', taskController.editTask);
+router.put('/update/:id', taskController.editTask);
 
 // DELETE - Deletes task
 router.delete('/delete/:id', taskController.deleteTask);
