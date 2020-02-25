@@ -1,0 +1,8 @@
+{
+    "name": "To Do List API Project",
+    "description": "Basic deployment of a REST API and interacting with it's endpoints.",
+    "repository": "https://github.com/rconatser/to-do-list-ria-2",
+    "logo": "./icon.svg",
+    "keywords": ["node", "api", "express", "mongodb", "mongoose"],
+    "image": "heroku/nodejs"
+}
