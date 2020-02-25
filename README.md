@@ -18,7 +18,9 @@ Project to incorperate our knowledge learned in DGM 4790 in regards to Node, Exp
 - [x] At least 1 endpoint allowing user to delete an item via DELETE
   - There is 1 endpoint within the [controllers/task.js](https://github.com/rconatser/to-do-list-ria-2/blob/master/controllers/task.js) file allowing users to delete task entries by ID. *Do so at your own risk, of course*.
 - [x] Datastore will contain at least 25 items
+  - You can view all items using the [/tasks](https://powerful-oasis-42318.herokuapp.com/tasks) endpoint.
 - [x] App will be deployed to production using some service like Heroku, Digital Ocean, etc.
+  - Heroku deployment can be found [here](https://powerful-oasis-42318.herokuapp.com/).
 - [x] All source code will be properly uploaded to GitHub
   - Though you're already here, you can locate all source code via the [GitHub Repo](https://github.com/rconatser/to-do-list-ria-2)
 - [x] ReadMe file will accurately describe the server install process (if any) and how to use the APIs
