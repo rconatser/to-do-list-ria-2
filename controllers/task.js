@@ -16,15 +16,15 @@ exports.getTasksByTag = (req, res, next) => {
 };
 
 exports.editTask = async (req, res, next) => {
-  try {
-    var task = await Task.findById(req.params.id).exec();
-    task.set(req.body);
-    var result = await task.save();
-    res.send(result);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-};
+  const title = req.body.title;
+  const dueDate = req.body.dueDate;
+  const content = req.body.content;
+  const priority = req.body.priority;
+  const tags = req.body.tags;
+
+  const task = await Task.findByIdAndUpdate({_id: req.params.id}, {query});
+  
+}
 
 exports.deleteTask = async (req, res, next) => {
   try {
@@ -53,7 +53,7 @@ exports.createTask = (req, res, next) => {
       .then(result => {
         res.status(201).json({
             message: 'Task Created Successfully!',
-            post: result
+            task: result
         });
       })
       .catch(err => {
