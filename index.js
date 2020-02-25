@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const taskRoutes = require('./routes/task');
 const userRoutes = require('./routes/user');
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 const app = express();
 
 app.use(bodyParser.json());
