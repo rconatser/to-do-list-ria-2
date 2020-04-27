@@ -27,7 +27,8 @@ exports.getOneTask = (req, res, next) => {
 		}
 	})
 	.then(result => {
-		res.status(200).send(result);  
+		console.log('RESULT:' + result);
+		res.status(200).json(result);  
 	})
 	.catch(err => {
 		if (!err.statusCode) {
