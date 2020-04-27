@@ -8,6 +8,8 @@ router.get('/tasks', taskController.getAllTasks);
 // GET - ONE Task created
 router.get('/task/:id', taskController.getOneTask);
 
+// GET - All tasks filtered by PRIORITY
+router.get('/bypriority', taskController.getTasksByPriority);
 
 // GET - All Tasks filtered by Tag created
 router.get('/bytag', taskController.getTasksByTag);

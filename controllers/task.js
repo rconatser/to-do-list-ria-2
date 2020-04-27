@@ -15,6 +15,14 @@ exports.getTasksByTag = (req, res, next) => {
   })
 };
 
+exports.getTasksByPriority = (req, res, next) => {
+	const priority = req.query;
+	Task.find(priority)
+	.then(result => {
+	  res.status(200).send(result)
+	})
+  };
+
 exports.getOneTask = (req, res, next) => {
 	const id = req.params.id;
 
