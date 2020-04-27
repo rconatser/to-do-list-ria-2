@@ -5,6 +5,10 @@ const router = express.Router();
 // GET - All Tasks created
 router.get('/tasks', taskController.getAllTasks);
 
+// GET - ONE Task created
+router.get('/task/:id', taskController.getOneTask);
+
+
 // GET - All Tasks filtered by Tag created
 router.get('/bytag', taskController.getTasksByTag);
 

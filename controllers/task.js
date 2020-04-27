@@ -15,6 +15,14 @@ exports.getTasksByTag = (req, res, next) => {
   })
 };
 
+exports.getOneTask = (req, res, next) => {
+	const id = req.params.id;
+	Task.find(id)
+	.then(result => {
+	  res.status(200).send(result)
+	})
+  };
+
 exports.sortTasksByPriority = (req, res, next) => {
   Task.find()
     .sort({dueDate: 1}) // sorts by date ascending
