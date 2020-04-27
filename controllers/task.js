@@ -18,24 +18,11 @@ exports.getTasksByTag = (req, res, next) => {
 exports.getOneTask = (req, res, next) => {
 	const id = req.params.id;
 
-	Task.findById(id)
-	.then(task => {
-		if(!task){
-		const error = new Error('Could not find post.');
-		error.statusCode = 404;
-		throw error;
-		}
-	})
+	Task.find(id)
 	.then(result => {
 		console.log('RESULT:' + result);
-		res.status(200).json(result);  
+		res.status(200).send(result);  
 	})
-	.catch(err => {
-		if (!err.statusCode) {
-		err.statusCode = 500;
-		}
-		next(err);
-	});
   };
 
 exports.sortTasksByPriority = (req, res, next) => {
