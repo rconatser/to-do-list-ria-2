@@ -18,7 +18,7 @@ exports.getTasksByTag = (req, res, next) => {
 exports.getOneTask = (req, res, next) => {
 	const id = req.params.id;
 
-	Task.find(id)
+	Task.findById(id)
 	.then(result => {
 		console.log('RESULT:' + result);
 		res.status(200).send(result);  
