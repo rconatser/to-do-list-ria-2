@@ -24,9 +24,10 @@ exports.getOneTask = (req, res, next) => {
 		const error = new Error('Could not find post.');
 		error.statusCode = 404;
 		throw error;
-		} else if(task) {
-			res.status(200).send(result);  
 		}
+	})
+	.then(result => {
+		res.status(200).send(result);  
 	})
 	.catch(err => {
 		if (!err.statusCode) {
