@@ -37,10 +37,7 @@ exports.getOneTask = (req, res, next) => {
 		task.tags = tags;
 	})
 	.then(result => {
-		res.status(200).json({
-		message: 'Task successfully updated!',
-		task: result
-		})
+		res.status(200).json(result);  
 	})
 	.catch(err => {
 		if (!err.statusCode) {
