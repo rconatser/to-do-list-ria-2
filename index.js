@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-import cors from 'cors';
+var cors = require('cors');
 
 const taskRoutes = require('./routes/task');
 const userRoutes = require('./routes/user');
